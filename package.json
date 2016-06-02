@@ -1,0 +1,50 @@
+{
+  "name": "gitStarted-cli",
+  "version": "1.0.0",
+  "description": "Where you can use the command line to get the template.",
+  "main": "index.js",
+  "bin": {
+    "gitstarted": "./lib/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "copy-dist": "cp ./src/index.html ./dist/ && cp -a ./src/assets/. ./dist/assets/",
+    "build": "npm run clean && npm run copy-dist & webpack",
+    "clean": "rm -rf dist && mkdir -p ./dist/assets",
+    "serve": "npm run clean && npm run copy-dist && webpack-dev-server --inline --history-api-fallback --content-base dist/",
+    "windows-clean": "rmdir .\\dist /s /q && md .\\dist\\assets",
+    "windows-copy-dist": "copy .\\src\\index.html .\\dist\\",
+    "windows-serve": "npm run windows-clean && npm run windows-copy-dist && webpack-dev-server --inline --history-api-fallback --content-base dist/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gitStarted-io/gitStarted-web.git"
+  },
+  "keywords": [
+    "template",
+    "gitStarted",
+    "git",
+    "GitHub",
+    "BitBucket"
+  ],
+  "author": "Jake Alsemgeest",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.11.0",
+    "chalk": "^1.1.3",
+    "commander": "^2.9.0",
+    "fs": "0.0.2",
+    "js-cookie": "^2.1.1",
+    "moment": "^2.13.0",
+    "path": "^0.12.7",
+    "prompt": "^1.0.0",
+    "render-readme": "^1.3.1",
+    "sync-request": "^3.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.9.0",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "webpack": "^1.13.1"
+  }
+}
